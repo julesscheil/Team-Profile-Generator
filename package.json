@@ -1,0 +1,28 @@
+{
+  "name": "Team-Profile-Generator",
+  "version": "1.0.0",
+  "description": "This application creates a team profile based on user input using node.js. At the end of the prompts it will display an html page with the inputted information",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julesscheil/Team-Profile-Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julesscheil/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/julesscheil/Team-Profile-Generator#readme"
+}
