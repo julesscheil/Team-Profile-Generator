@@ -4,7 +4,8 @@
   "description": "This application creates a team profile based on user input using node.js. At the end of the prompts it will display an html page with the inputted information",
   "main": "index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "test":"test"
   },
   "dependencies": {
     "inquirer": "^8.0.0",
@@ -12,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose test/*"
   },
   "repository": {
     "type": "git",
