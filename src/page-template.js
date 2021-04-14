@@ -89,7 +89,7 @@ module.exports = team => {
 <body>
     <header>
         <div class="jumbotron p-3 mb-2 bg-danger text-white">
-            <h1 class="text-center">My Team</h1>
+            <h1 class="text-center">Engineering Team</h1>
         </div>
     </header>
     <main>
