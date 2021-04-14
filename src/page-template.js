@@ -18,13 +18,24 @@ const generateTeam = team => {
                 </div>
             </div>`;
     };
-    // // create engineer html
-    // const generateEngineer = engineer => {
-    //     // ` return ${manager.getName()} etc etc`
-    //     return `
-    // <div> <h1>Engineer Stuff</h1></div>
-    // <h2>${engineer.getName()}</h2>`;
-    // };
+    // create engineer html
+    const generateEngineer = engineer => {
+        // ` return ${manager.getName()} etc etc`
+        return `
+        <div class="card bg-light mb-3" style="min-width: 20rem;">
+        <div class="card-header p-3 mb-2 bg-primary text-white">
+            <h3>${engineer.getName()}</h3>
+            <p><i class="fas fa-glasses"></i> ${engineer.getRole()}</p>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${engineer.getID()}</li>
+                <li class="list-group-item">Email: ${engineer.getEmail()}</li>
+                <li class="list-group-item">GitHub: ${engineer.getGitHub()}</li>
+            </ul>
+        </div>
+    </div>`;
+    };
     // // create intern html
     // const generateIntern = intern => {
     //     // ` return ${manager.getName()} etc etc`
@@ -36,12 +47,13 @@ const generateTeam = team => {
     const html = [];
     html.push(team
         .filter(employee => employee.getRole() === "Manager")
-        .map(manager => generateManager(manager))
-        // .filter(employee => employee.getRole() === "Engineer")
-        // .map(engineer => generateEngineer(engineer))
+        .map(manager => generateManager(manager)));
+        html.push(team
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineer => generateEngineer(engineer)));
         // .filter(employee => employee.getRole() === "Intern")
         // .map(intern => generateIntern(intern))
-    );
+    
     return html.join("");
 
 }
