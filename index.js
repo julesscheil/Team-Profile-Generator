@@ -96,8 +96,50 @@ function engineerQuestions() {
       switch (answers.moveOn) {
         case "Engineer":
           engineerQuestions();
-        // case "Intern":
-        //   internQuestions();
+        case "Intern":
+          internQuestions();
+        case "I dont want to add another":
+          buildTeam();
+      }
+    });
+}
+
+function internQuestions() {
+  inquirer
+    .prompt([{
+        type: 'input',
+        name: 'internName',
+        message: "What is your intern's name?",
+      },
+      {
+        type: 'input',
+        name: 'internID',
+        message: "What is the intern's ID?",
+      },
+      {
+        type: 'input',
+        name: 'internEmail',
+        message: "What is the intern's email?",
+      },
+      {
+        type: 'input',
+        name: 'internSchool',
+        message: "What school did your intern go to?"
+      },
+      {
+        type: 'list',
+        name: "moveOn",
+        choices: ["Engineer", "Intern", "I dont want to add another"],
+        message: "Add another member?"
+      }
+    ]).then(answers => {
+      const intern = new Intern(answers.internName, answers.internID, answers.internEmail, answers.internSchool);
+      team.push(intern);
+      switch (answers.moveOn) {
+        case "Engineer":
+          engineerQuestions();
+        case "Intern":
+          internQuestions();
         case "I dont want to add another":
           buildTeam();
       }

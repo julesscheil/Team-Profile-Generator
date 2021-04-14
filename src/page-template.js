@@ -2,7 +2,6 @@ const generateTeam = team => {
 
     // create manager html
     const generateManager = manager => {
-        // ` return ${manager.getName()} etc etc`
         return `
         <div class="card bg-light mb-3" style="min-width: 20rem;">
                 <div class="card-header p-3 mb-2 bg-primary text-white">
@@ -20,7 +19,6 @@ const generateTeam = team => {
     };
     // create engineer html
     const generateEngineer = engineer => {
-        // ` return ${manager.getName()} etc etc`
         return `
         <div class="card bg-light mb-3" style="min-width: 20rem;">
         <div class="card-header p-3 mb-2 bg-primary text-white">
@@ -36,13 +34,23 @@ const generateTeam = team => {
         </div>
     </div>`;
     };
-    // // create intern html
-    // const generateIntern = intern => {
-    //     // ` return ${manager.getName()} etc etc`
-    //     return `
-    // <div> <h1>Manager Stuff</h1></div>
-    // <h2>${intern.getName()}</h2>`;
-    // };
+    // create intern html
+    const generateIntern = intern => {
+        return `
+        <div class="card bg-light mb-3" style="min-width: 20rem;">
+        <div class="card-header p-3 mb-2 bg-primary text-white">
+            <h3>${intern.getName()}</h3>
+            <p><i class="fas fa-user-graduate"></i> ${intern.getRole()}</p>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${intern.getID()}</li>
+                <li class="list-group-item">Email: ${intern.getEmail()}</li>
+                <li class="list-group-item">GitHub: ${intern.getSchool()}</li>
+            </ul>
+        </div>
+    </div>`;
+    };
 
     const html = [];
     html.push(team
@@ -51,8 +59,9 @@ const generateTeam = team => {
         html.push(team
         .filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer)));
-        // .filter(employee => employee.getRole() === "Intern")
-        // .map(intern => generateIntern(intern))
+        html.push(team
+        .filter(employee => employee.getRole() === "Intern")
+        .map(intern => generateIntern(intern)));
     
     return html.join("");
 
