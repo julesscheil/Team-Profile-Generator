@@ -47,7 +47,7 @@ const generateTeam = team => {
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${intern.getID()}</li>
                 <li class="list-group-item">Email: ${intern.getEmail()}</li>
-                <li class="list-group-item">GitHub: ${intern.getSchool()}</li>
+                <li class="list-group-item">School: ${intern.getSchool()}</li>
             </ul>
         </div>
     </div>`;

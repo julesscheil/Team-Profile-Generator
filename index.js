@@ -106,8 +106,10 @@ function engineerQuestions() {
       switch (answers.moveOn) {
         case "Engineer":
           engineerQuestions();
+          break;
         case "Intern":
           internQuestions();
+          break;
           //break out
         case "I dont want to add another":
           buildTeam();
@@ -154,8 +156,10 @@ function internQuestions() {
       switch (answers.moveOn) {
         case "Engineer":
           engineerQuestions();
+          break;
         case "Intern":
           internQuestions();
+          break;
         case "I dont want to add another":
           buildTeam();
       }
