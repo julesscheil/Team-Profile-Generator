@@ -23,7 +23,7 @@ describe("tests if sub class exists", () => {
         const internObject = new Intern("jules", 1,"jules@gmail.com");
         expect(internObject.email).toBe(email);
     })
-    it('should take in a GitHub username', () => {
+    it('should take in a school name', () => {
         const school = "UGA"
         const internObject = new Intern("jules", 1,"jules@gmail.com","UGA");
         expect(internObject.school).toBe(school);

@@ -1,4 +1,4 @@
-const Engineer =require('../lib/Engineer');
+const Engineer = require('../lib/Engineer');
 
 describe("tests if sub class exists", () => {
     it('should be an object', () => {
