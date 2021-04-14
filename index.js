@@ -6,18 +6,19 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const pageTemplate = require("./src/page-template");
-const OUTPUT_DIR = path.resolve(__dirname, "dist");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+const output_DIR = path.resolve(__dirname, "dist");
+const outputPath = path.join(output_DIR, "team.html");
 
-// create team array
+// create empty team array
 const team = [];
 
-function runApp() {
+//main function to run application
+function init() {
   // start with manager
   function managerQuestions() {
-    inquirer.prompt([
-      // console.log("Please give your team's information:") ,
-      {
+    console.log("Please fill in team info: ");
+    // prompt questions
+    inquirer.prompt([{
         type: 'input',
         name: 'managerName',
         message: "What is your manager's name?",
@@ -44,25 +45,29 @@ function runApp() {
         message: "Add another member?"
       }
     ]).then(answers => {
+      // save data to new object
       const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerOfficeNumber);
+      // push to team array
       team.push(manager);
 
+      //add another member?
       switch (answers.moveOn) {
         case "Engineer":
           engineerQuestions();
-        // case "Intern":
-        //   internQuestions();
+        case "Intern":
+          internQuestions();
+        //break out
         case "I dont want to add another":
           buildTeam();
       }
-
-      // buildTeam();
     })
   }
   managerQuestions();
 }
 
+// function to add engineers questions if user asked to add engineer
 function engineerQuestions() {
+  //prompts questions
   inquirer
     .prompt([{
         type: 'input',
@@ -91,20 +96,26 @@ function engineerQuestions() {
         message: "Add another member?"
       }
     ]).then(answers => {
+      // add to new engineer object
       const engineer = new Engineer(answers.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGitHub);
+      // push to team array
       team.push(engineer);
+      //add another?
       switch (answers.moveOn) {
         case "Engineer":
           engineerQuestions();
         case "Intern":
           internQuestions();
+          //break out
         case "I dont want to add another":
           buildTeam();
       }
     });
 }
 
+// function to add intern if user selects to
 function internQuestions() {
+  // prompt questions
   inquirer
     .prompt([{
         type: 'input',
@@ -133,8 +144,11 @@ function internQuestions() {
         message: "Add another member?"
       }
     ]).then(answers => {
+      // add data to new intern object
       const intern = new Intern(answers.internName, answers.internID, answers.internEmail, answers.internSchool);
+      // push to team array
       team.push(intern);
+      // add members?
       switch (answers.moveOn) {
         case "Engineer":
           engineerQuestions();
@@ -146,11 +160,14 @@ function internQuestions() {
     });
 }
 
+// function to build team to file
 function buildTeam() {
   // Create the output directory if the output path doesn't exist
-  if (!fs.existsSync(OUTPUT_DIR)) {
-    fs.mkdirSync(OUTPUT_DIR)
+  if (!fs.existsSync(output_DIR)) {
+    fs.mkdirSync(output_DIR)
   }
   fs.writeFileSync(outputPath, pageTemplate(team), "utf-8");
 }
-runApp();
+
+// function call to init function to start application
+init();

@@ -1,3 +1,4 @@
+// create generate team variable and function to pass team
 const generateTeam = team => {
 
     // create manager html
@@ -51,28 +52,24 @@ const generateTeam = team => {
         </div>
     </div>`;
     };
-
+    // push the html from above
     const html = [];
     html.push(team
         .filter(employee => employee.getRole() === "Manager")
         .map(manager => generateManager(manager)));
-        html.push(team
+    html.push(team
         .filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer)));
-        html.push(team
+    html.push(team
         .filter(employee => employee.getRole() === "Intern")
         .map(intern => generateIntern(intern)));
-    
+    // join together
     return html.join("");
-
 }
 
-
-
-
+//export html function
 module.exports = team => {
-    return `
-    <!DOCTYPE html>
+    return `<!DOCTYPE html>
 <html lang="en">
 
 <head>

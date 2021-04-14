@@ -7,9 +7,9 @@ describe("tests if class exists", () => {
     it('should be an object', () => {
         //arrange
         //act
-        const employeeObject = new Employee(); 
+        const employeeObject = new Employee();
         //assert 
-        expect(typeof(employeeObject)).toBe('object');
+        expect(typeof (employeeObject)).toBe('object');
     })
     // test that a name is taken in
     it('should take in a name', () => {
@@ -20,13 +20,13 @@ describe("tests if class exists", () => {
     // test an id is taken in
     it('should take in an id', () => {
         const id = 1
-        const employeeObject = new Employee("jules",1);
+        const employeeObject = new Employee("jules", 1);
         expect(employeeObject.id).toBe(id);
     })
     // test an email is taken in
     it('should take in an email', () => {
         const email = "jules@gmail.com"
-        const employeeObject = new Employee("jules", 1,"jules@gmail.com");
+        const employeeObject = new Employee("jules", 1, "jules@gmail.com");
         expect(employeeObject.email).toBe(email);
     })
 })
