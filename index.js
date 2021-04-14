@@ -54,8 +54,10 @@ function init() {
       switch (answers.moveOn) {
         case "Engineer":
           engineerQuestions();
+          break;
         case "Intern":
           internQuestions();
+          break;
         //break out
         case "I dont want to add another":
           buildTeam();
